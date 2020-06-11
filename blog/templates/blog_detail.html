@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body class="detail_body">
+  <div class="blog-carousel">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 100%;">
+      {% if not blog.image2 %}
+
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100 image-resize" src="{{blog.image1.url}}" alt="">
+        </div>
+      </div>
+
+      {%elif not blog.image3%}
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100 image-resize" src="{{blog.image1.url}}" alt="">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100 image-resize" src="{{blog.image2.url}}" alt="">
+        </div>
+
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+      {% else %}
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <h2 style="text-align: center;"><i>{{blog.title}}</i></h2>
+        <div class="carousel-item active">
+          <img class="d-block w-100 image-resize" src="{{blog.image1.url}}" alt="First slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100 image-resize" src="{{blog.image2.url}}" alt="Second slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100 image-resize" src="{{blog.image3.url}}" alt="Third slide">
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="card-body">
+    <h5 class="card-title">{{blog.title}}</h5>
+    <p class="card-text">{{blog.description}}</p>
+    <p class="card-text"><small class="text-muted">{{blog.price}} $</small></p>
+  </div>
+  
+  <br>
+  <h3>Comments</h3>
+  <hr>
+  {%for comment in comments%}
+  <p><b>{{comment.name}}</b></p>
+  <p>{{comment.message}}</p>
+  <hr>
+  {%endfor%}
+
+  <div class="div_comment" style="text-align: center;">
+  <form class="single_comment_form" action="" method="POST">
+      {%csrf_token%}
+      <input  type="text" placeholder="Your Name" name="name" class="message_comment form-control md-textarea" required="" autofocus="">
+      <br>
+
+      <textarea class="message_comment form-control md-textarea" placeholder="Write Your Comment" name="message" id="" cols="30" rows="10" required="" style="height: 110px;"></textarea>
+      <br>
+
+      <button class="btn btn-primary">Submit</button>
+      <br>
+  </form>
+  </div>
+</body>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{%block nav-about%}
+<li class="nav-item dropdown active">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      About
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <a class="dropdown-item" href="{%url 'blog:what-is-armath'%}">What is Armath</a>
+      <a class="dropdown-item active" href="{%url 'blog:edu-program'%}">Educational program</a>
+      <a class="dropdown-item" href="{%url 'blog:why-armath'%}">WhyArmath</a>
+    </div>
+  </li>
+{%endblock%}
+
+{% block content %}
+<div class="main">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem reiciendis, architecto fugiat dolore corporis dicta esse error in atque hic, molestiae laboriosam eveniet tenetur repudiandae ab! Dicta ut eius corrupti.</p>
+</div>
+{% endblock %}

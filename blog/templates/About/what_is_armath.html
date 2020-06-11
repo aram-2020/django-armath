@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{%block nav-about%}
+<li class="nav-item dropdown active">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      About
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <a class="dropdown-item active" href="{%url 'blog:what-is-armath'%}">What is Armath</a>
+      <a class="dropdown-item" href="{%url 'blog:edu-program'%}">Educational program</a>
+      <a class="dropdown-item" href="{%url 'blog:why-armath'%}">WhyArmath</a>
+    </div>
+  </li>
+{%endblock%}
+
+{%block content%}
+
+<input type="text" name="" id="input" placeholder="Enter the Number">
+<br>
+
+<button onclick="myFunction()">Submit</button>
+<br>
+
+<h1 id="title"></h1>
+<p id="demo"></p>
+
+{%endblock%}
